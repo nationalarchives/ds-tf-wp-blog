@@ -1,4 +1,4 @@
-resource "aws_db_instance" "wp_db_master" {
+resource "aws_db_instance" "wp_db_main" {
     name                        = var.wp_db_name
     identifier_prefix           = "${var.service}-wp-ma-"
     allocated_storage           = 5
@@ -31,7 +31,7 @@ resource "aws_db_instance" "wp_db_master" {
     }
 }
 
-resource "aws_db_instance" "wp_db_rr" {
+resource "aws_db_instance" "wp_db_replica" {
     count                   = var.environment == 'live' ? 1 : 0
     name                    = var.wp_db_name
     identifier_prefix       = "${var.service}-wp-rr-"
