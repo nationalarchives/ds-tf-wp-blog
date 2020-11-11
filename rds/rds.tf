@@ -44,7 +44,7 @@ resource "aws_db_instance" "wp_db_replica" {
     username                = var.wp_db_username
     password                = var.wp_db_password
     apply_immediately       = var.db_apply_immediately
-    replicate_source_db     = aws_db_instance.wp_db_master.identifier
+    replicate_source_db     = aws_db_instance.wp_db_main.identifier
     backup_window           = var.db_backup_window
     backup_retention_period = 1
     skip_final_snapshot     = true
