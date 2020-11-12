@@ -34,6 +34,8 @@ variable "instance_type" {}
 
 variable "key_name" {}
 
+variable "efs_mount_dir" {}
+
 variable "wp_db_name" {}
 
 variable "wp_db_username" {}
@@ -42,7 +44,13 @@ variable "wp_db_password" {}
 
 variable "wp_domain_name" {}
 
+variable "cdn_bucket_name" {}
+
+variable "cdn_cloudfront_url" {}
+
 variable "cdn_dir" {}
+
+variable "wpms_smtp_password" {}
 
 variable "route53_local_zone_id" {}
 

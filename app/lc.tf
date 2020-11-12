@@ -23,15 +23,18 @@ data "template_file" "ec2_userdata" {
     template = file("${path.module}/scripts/userdata.sh")
 
     vars = {
-        mount_target = aws_efs_file_system.wp_efs.dns_name
-        mount_dir    = "/mnt/efs"
-        db_host      = "db.${var.service}wp.${var.environment}.local"
-        db_name      = var.wp_db_name
-        db_user      = var.wp_db_username
-        db_pass      = var.wp_db_password
-        service      = var.service
-        environment  = var.environment
-        domain       = var.wp_domain_name
-        cdn_dir      = var.cdn_dir
+        mount_target       = aws_efs_file_system.wp_efs.dns_name
+        mount_dir          = var.efs_mount_dir
+        db_host            = "db.${var.service}wp.${var.environment}.local"
+        db_name            = var.wp_db_name
+        db_user            = var.wp_db_username
+        db_pass            = var.wp_db_password
+        service            = var.service
+        environment        = var.environment
+        domain             = var.wp_domain_name
+        cdn_bucket_name    = var.cdn_bucket_name
+        cdn_cloudfront_url = var.cdn_cloudfront_url
+        wpms_smtp_password = var.wpms_smtp_password
+        cdn_dir            = var.cdn_dir
     }
 }
