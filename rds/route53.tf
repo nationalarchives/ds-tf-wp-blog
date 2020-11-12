@@ -4,6 +4,6 @@ resource "aws_route53_record" "db" {
     type    = "CNAME"
     ttl     = "300"
     records = [
-        var.wp_db_instance_address
+        aws_db_instance.wp_db_main.address
     ]
 }

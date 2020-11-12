@@ -44,8 +44,6 @@ variable "wp_domain_name" {}
 
 variable "cdn_dir" {}
 
-variable "wp_db_instance_address" {}
-
 variable "route53_local_zone_id" {}
 
 variable "everyone" {}
