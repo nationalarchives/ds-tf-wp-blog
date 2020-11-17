@@ -3,6 +3,7 @@ resource "aws_db_instance" "wp_db_main" {
     identifier_prefix           = "${var.service}-wp-ma-"
     allocated_storage           = 5
     storage_type                = "gp2"
+    storage_encrypted           = true
     engine                      = "mysql"
     engine_version              = "8.0.17"
     license_model               = "general-public-license"
@@ -37,6 +38,7 @@ resource "aws_db_instance" "wp_db_replica" {
     identifier_prefix       = "${var.service}-wp-rr-"
     allocated_storage       = 5
     storage_type            = "gp2"
+    storage_encrypted       = true
     engine                  = "mysql"
     engine_version          = "8.0.17"
     license_model           = "general-public-license"

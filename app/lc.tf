@@ -12,6 +12,7 @@ resource "aws_launch_configuration" "wp_launch_config" {
 
     root_block_device {
         volume_size = 100
+        encrypted = true
     }
 
     lifecycle {

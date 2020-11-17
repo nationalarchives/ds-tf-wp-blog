@@ -48,6 +48,8 @@ variable "cdn_bucket_name" {}
 
 variable "cdn_cloudfront_url" {}
 
+variable "cdn_s3_bucket_arn" {}
+
 variable "cdn_dir" {}
 
 variable "wpms_smtp_password" {}

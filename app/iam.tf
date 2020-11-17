@@ -10,7 +10,7 @@ resource "aws_iam_role" "wp_role" {
                "Service": "ec2.amazonaws.com"
             },
             "Effect": "Allow",
-            "Sid": ""
+            "Sid": "WPAssumeRole"
         }
     ]
 }
@@ -32,7 +32,7 @@ resource "aws_iam_policy" "wp_cdn_s3_access" {
         "s3:ListBucket"
       ],
      "Resource": [
-        "arn:aws:s3:::tna-cdn"
+        "${var.cdn_s3_bucket_arn}"
       ]
     },
     {
@@ -44,7 +44,7 @@ resource "aws_iam_policy" "wp_cdn_s3_access" {
         "s3:PutObjectAcl"
       ],
       "Resource": [
-         "arn:aws:s3:::tna-cdn/*"
+         "${var.cdn_s3_bucket_arn}/*"
       ]
     }
   ]
