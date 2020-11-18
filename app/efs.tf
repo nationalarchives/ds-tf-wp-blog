@@ -13,12 +13,12 @@ resource "aws_efs_mount_target" "efs_private_a" {
     file_system_id = aws_efs_file_system.wp_efs.id
     security_groups = [
         aws_security_group.wp_efs_access.id]
-    subnet_id = var.private_subnet_ids[0]
+    subnet_id = var.private_subnet_a_id
 }
 
 resource "aws_efs_mount_target" "efs_private_b" {
     file_system_id = aws_efs_file_system.wp_efs.id
     security_groups = [
         aws_security_group.wp_efs_access.id]
-    subnet_id = var.private_subnet_ids[1]
+    subnet_id = var.private_subnet_b_id
 }
