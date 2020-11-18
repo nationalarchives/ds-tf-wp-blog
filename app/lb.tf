@@ -8,8 +8,8 @@ resource "aws_lb" "public_lb" {
         aws_security_group.wp_public_access.id]
 
     subnets = [
-        var.private_subnet_a_id,
-        var.private_subnet_b_id
+        var.public_subnet_a_id,
+        var.public_subnet_b_id
     ]
 
     tags = {

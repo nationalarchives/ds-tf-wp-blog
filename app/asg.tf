@@ -3,7 +3,8 @@ resource "aws_autoscaling_group" "wp" {
     launch_configuration = aws_launch_configuration.wp_launch_config.name
 
     vpc_zone_identifier = [
-        var.private_subnet_ids
+        var.private_subnet_a_id,
+        var.private_subnet_b_id
     ]
 
     max_size                  = var.asg_max_size

@@ -10,11 +10,13 @@ variable "created_by" {}
 
 variable "vpc_id" {}
 
+variable "public_subnet_a_id" {}
+
+variable "public_subnet_b_id" {}
+
 variable "private_subnet_a_id" {}
 
 variable "private_subnet_b_id" {}
-
-variable "private_subnet_ids" {}
 
 variable "patch_group_name" {}
 
