@@ -56,3 +56,17 @@ PHP
 
 # Reset .htaccess
 wp rewrite flush --allow-root
+
+# Install themes and plugins
+wp theme install /build/tna-base.zip --force --allow-root
+wp theme install /build/tna-child-blog.zip --force --allow-root
+wp plugin install amazon-s3-and-cloudfront --force --allow-root
+wp plugin install co-authors-plus --force --allow-root
+wp plugin install wordpress-seo --force --allow-root
+wp plugin install wp-mail-smtp --force --allow-root
+wp plugin install jquery-colorbox --force --allow-root
+wp plugin install simple-footnotes --force --allow-root
+wp plugin install /build/wp-sync-db.zip --force --allow-root
+wp plugin install /build/tna-editorial-review.zip --force --allow-root
+wp plugin install /build/tna-wp-aws.zip --force --allow-root
+wp plugin install /build/tna-password-message.zip --force --allow-root
