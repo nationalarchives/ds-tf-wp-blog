@@ -62,8 +62,8 @@ resource "aws_iam_role_policy_attachment" "smm_ec2_role_policy" {
     role       = aws_iam_role.blog_role.id
 }
 
-resource "aws_iam_instance_profile" "wp" {
-    name = "${var.service}-wp-${var.environment}-instance-profile"
+resource "aws_iam_instance_profile" "blog" {
+    name = "${var.service}-wp-${var.environment}-iam-instance-profile"
     path = "/"
     role = aws_iam_role.blog_role.name
 }
