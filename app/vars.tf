@@ -58,6 +58,4 @@ variable "cdn_dir" {}
 
 variable "wpms_smtp_password" {}
 
-variable "route53_local_zone_id" {}
-
 variable "everyone" {}
