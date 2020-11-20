@@ -1,5 +1,5 @@
 resource "aws_iam_role" "wp_role" {
-    name               = "${var.service}-wp-${var.environment}-role"
+    name               = "${var.service}-wp-${var.environment}-london-role"
     assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -18,7 +18,7 @@ EOF
 }
 
 resource "aws_iam_policy" "wp_cdn_s3_access" {
-    name        = "${var.service}-wp-${var.environment}-cdn-s3-policy"
+    name        = "${var.service}-wp-${var.environment}-cdn-s3-london-policy"
     description = "WP access to CDN"
 
     policy = <<EOF
