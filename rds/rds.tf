@@ -15,7 +15,7 @@ resource "aws_db_instance" "wp_db_main" {
     multi_az                    = var.db_multi_az
     vpc_security_group_ids      = [
         aws_security_group.wp_db_access.id]
-    parameter_group_name        = var.db_parameter_group_name
+    parameter_group_name        = aws_db_parameter_group.wp_blog_db.name
     allow_major_version_upgrade = true
     final_snapshot_identifier   = "${var.service}-wp-${var.environment}-final-db-snapshot"
     backup_window               = var.db_backup_window
@@ -62,9 +62,9 @@ resource "aws_db_instance" "wp_db_replica" {
     }
 }
 
-resource "aws_db_parameter_group" "wp_db_parameter_group" {
-    name   = "${var.service}-wp-${var.environment}-db-mariadb"
-    family = var.wp_db_parameter_group
+resource "aws_db_parameter_group" "wp_blog_db" {
+    name   = var.db_parameter_group_name
+    family = var.db_parameter_group_family
 
     parameter {
         name  = "log_bin_trust_function_creators"

@@ -26,11 +26,11 @@ variable "db_multi_az" {}
 
 variable "db_parameter_group_name" {}
 
+variable "db_parameter_group_family" {}
+
 variable "db_backup_window" {}
 
 variable "db_backup_retention_period" {}
-
-variable "wp_db_parameter_group" {}
 
 variable "wp_app_access_sg_id" {}
 
