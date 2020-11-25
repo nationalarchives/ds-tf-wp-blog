@@ -12,6 +12,20 @@ variable "vpc_id" {}
 
 variable "db_instance_class" {}
 
+variable "db_engine" {}
+
+variable "db_engine_version" {}
+
+variable "db_allocated_storage" {}
+
+variable "db_storage_type" {}
+
+variable "db_storage_encrypted" {}
+
+variable "db_license_model" {}
+
+variable "db_snapshot_identifier" {}
+
 variable "wp_db_name" {}
 
 variable "wp_db_username" {}
