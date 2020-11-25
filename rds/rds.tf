@@ -39,7 +39,7 @@ resource "aws_db_instance" "wp_db_main" {
 }
 
 data "aws_db_snapshot" "latest_snapshot" {
-    count = var.db_snapshot_identifier ? 1 : 0
+    count = var.db_snapshot_identifier != "" ? 1 : 0
     db_snapshot_identifier = var.db_snapshot_identifier
     most_recent            = true
 }
