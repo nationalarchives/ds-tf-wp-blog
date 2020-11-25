@@ -1,12 +1,12 @@
 resource "aws_db_instance" "wp_db_main" {
     name                        = var.wp_db_name
-    identifier_prefix           = "${var.service}-wp-ma-"
-    allocated_storage           = 5
-    storage_type                = "gp2"
-    storage_encrypted           = true
-    engine                      = "mysql"
-    engine_version              = "8.0.17"
-    license_model               = "general-public-license"
+    identifier                  = "${var.service}-wp-main"
+    allocated_storage           = var.db_allocated_storage
+    storage_type                = var.db_storage_type
+    storage_encrypted           = var.db_storage_encrypted
+    engine                      = var.db_engine
+    engine_version              = var.db_engine_version
+    license_model               = var.db_license_model
     instance_class              = var.db_instance_class
     username                    = var.wp_db_username
     password                    = var.wp_db_password
@@ -35,13 +35,13 @@ resource "aws_db_instance" "wp_db_main" {
 resource "aws_db_instance" "wp_db_replica" {
     count                   = var.environment == "live" ? 1 : 0
     name                    = var.wp_db_name
-    identifier_prefix       = "${var.service}-wp-rr-"
-    allocated_storage       = 5
-    storage_type            = "gp2"
-    storage_encrypted       = true
-    engine                  = "mysql"
-    engine_version          = "8.0.17"
-    license_model           = "general-public-license"
+    identifier              = "${var.service}-wp-replica"
+    allocated_storage       = var.db_allocated_storage
+    storage_type            = var.db_storage_type
+    storage_encrypted       = var.db_storage_encrypted
+    engine                  = var.db_engine
+    engine_version          = var.db_engine_version
+    license_model           = var.db_license_model
     instance_class          = var.db_instance_class
     username                = var.wp_db_username
     password                = var.wp_db_password
