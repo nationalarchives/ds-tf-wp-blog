@@ -20,11 +20,11 @@ resource "aws_db_instance" "wp_db_main" {
     final_snapshot_identifier   = "${var.service}-wp-${var.environment}-final-db-snapshot"
     backup_window               = var.db_backup_window
     backup_retention_period     = var.db_backup_retention_period
-    snapshot_identifier         = var.db_snapshot_identifier ? data.aws_db_snapshot.latest_snapshot[0].id : null
+    snapshot_identifier         = var.db_snapshot_identifier != "" ? data.aws_db_snapshot.latest_snapshot[0].id : null
 
     lifecycle {
         ignore_changes = [
-            "snapshot_identifier"]
+            snapshot_identifier]
     }
 
     tags = {
