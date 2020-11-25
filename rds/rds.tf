@@ -28,7 +28,7 @@ resource "aws_db_instance" "wp_db_main" {
     }
 
     tags = {
-        Name        = "${var.service}-wp-${var.environment}-ma"
+        Name        = "${var.service}-wp-main"
         Service     = var.service
         Environment = var.environment
         CostCentre  = var.cost_centre
@@ -64,7 +64,7 @@ resource "aws_db_instance" "wp_db_replica" {
     skip_final_snapshot     = true
 
     tags = {
-        Name        = "${var.service}-wp-${var.environment}-rr"
+        Name        = "${var.service}-wp-replica"
         Service     = var.service
         Environment = var.environment
         CostCentre  = var.cost_centre
