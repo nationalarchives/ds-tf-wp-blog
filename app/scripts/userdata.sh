@@ -27,6 +27,11 @@ sudo echo "# file: /etc/httpd/conf.d/wordpress.conf
   </Directory>
 </VirtualHost>" >> /etc/httpd/conf.d/wordpress.conf
 echo "Custom Apache config and unset upgrade to HTTP/2"
+
+# Set file permissions for apache
+sudo chown apache:apache /var/www/html -R
+find /var/www/html -type d -exec chmod 775 {} \;
+find /var/www/html -type f -exec chmod 664 {} \;
 sudo systemctl restart httpd
 
 wp config create --dbhost=${db_host} --dbname=${db_name} --dbuser=${db_user} --dbpass=${db_pass} --allow-root --extra-php <<PHP
