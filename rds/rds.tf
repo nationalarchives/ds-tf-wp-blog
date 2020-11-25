@@ -20,16 +20,27 @@ resource "aws_db_instance" "wp_db_main" {
     final_snapshot_identifier   = "${var.service}-wp-${var.environment}-final-db-snapshot"
     backup_window               = var.db_backup_window
     backup_retention_period     = var.db_backup_retention_period
+    snapshot_identifier         = data.aws_db_snapshot.latest_snapshot.id
+
+    lifecycle {
+        ignore_changes = [
+            "snapshot_identifier"]
+    }
 
     tags = {
-        Name            = "${var.service}-wp-${var.environment}-ma"
-        Service         = var.service
-        Environment     = var.environment
-        CostCentre      = var.cost_centre
-        Owner           = var.owner
-        CreatedBy       = var.created_by
-        Terraform       = true
+        Name        = "${var.service}-wp-${var.environment}-ma"
+        Service     = var.service
+        Environment = var.environment
+        CostCentre  = var.cost_centre
+        Owner       = var.owner
+        CreatedBy   = var.created_by
+        Terraform   = true
     }
+}
+
+data "aws_db_snapshot" "latest_snapshot" {
+    db_snapshot_identifier = var.db_snapshot_identifier
+    most_recent            = true
 }
 
 resource "aws_db_instance" "wp_db_replica" {
@@ -52,13 +63,13 @@ resource "aws_db_instance" "wp_db_replica" {
     skip_final_snapshot     = true
 
     tags = {
-        Name            = "${var.service}-wp-${var.environment}-rr"
-        Service         = var.service
-        Environment     = var.environment
-        CostCentre      = var.cost_centre
-        Owner           = var.owner
-        CreatedBy       = var.created_by
-        Terraform       = true
+        Name        = "${var.service}-wp-${var.environment}-rr"
+        Service     = var.service
+        Environment = var.environment
+        CostCentre  = var.cost_centre
+        Owner       = var.owner
+        CreatedBy   = var.created_by
+        Terraform   = true
     }
 }
 
