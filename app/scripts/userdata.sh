@@ -40,20 +40,20 @@ define( 'WP_MEMORY_LIMIT', '256M' );
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
 define( 'AS3CF_AWS_USE_EC2_IAM_ROLE', true );
 define( 'AS3CF_SETTINGS', serialize( array(
-    'bucket' => ${cdn_bucket_name},
+    'bucket' => '${cdn_bucket_name}',
     'provider' => 'aws',
     'use-server-roles' => true,
     'copy-to-s3' => true,
     'serve-from-s3' => true,
     'domain' => 'cloudfront',
-    'cloudfront' => ${cdn_cloudfront_url},
+    'cloudfront' => '${cdn_cloudfront_url}',
     'enable-object-prefix' => true,
     'object-prefix' => '${cdn_dir}/wp-content/uploads/',
     'force-https' => true,
     'remove-local-file' => true
 ) ) );
 define( 'WPMS_ON', true );
-define( 'WPMS_SMTP_PASS', ${wpms_smtp_password} );
+define( 'WPMS_SMTP_PASS', '${wpms_smtp_password}' );
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '128M');
 @ini_set( 'memory_limit', '256M' );
