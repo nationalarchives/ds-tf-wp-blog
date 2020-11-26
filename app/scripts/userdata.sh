@@ -41,8 +41,11 @@ RewriteRule . /index.php [L]
 
 # Create WP config file
 /usr/local/bin/wp config create --dbhost=${db_host} --dbname=${db_name} --dbuser=${db_user} --dbpass=${db_pass} --allow-root --extra-php <<PHP
-define('WP_SITEURL', 'http://${domain}');
-define('WP_HOME', 'http://${domain}');
+/** Detect if SSL is used. This is required since we are terminating SSL either on CloudFront or on ELB */
+if ((\$_SERVER['HTTP_CLOUDFRONT_FORWARDED_PROTO'] == 'https') OR (\$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))
+    {\$_SERVER['HTTPS']='on';}
+define('WP_SITEURL', 'https://${domain}');
+define('WP_HOME', 'https://${domain}');
 define( 'TNA_CLOUD', false );
 define( 'WP_MEMORY_LIMIT', '256M' );
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
