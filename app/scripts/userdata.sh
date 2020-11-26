@@ -34,7 +34,7 @@ find /var/www/html -type d -exec chmod 775 {} \;
 find /var/www/html -type f -exec chmod 664 {} \;
 sudo systemctl restart httpd
 
-wp config create --dbhost=${db_host} --dbname=${db_name} --dbuser=${db_user} --dbpass=${db_pass} --allow-root --extra-php <<PHP
+/usr/local/bin/wp config create --dbhost=${db_host} --dbname=${db_name} --dbuser=${db_user} --dbpass=${db_pass} --allow-root --extra-php <<PHP
 define( 'TNA_CLOUD', false );
 define( 'WP_MEMORY_LIMIT', '256M' );
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
@@ -60,18 +60,18 @@ define( 'WPMS_SMTP_PASS', ${wpms_smtp_password} );
 PHP
 
 # Reset .htaccess
-wp rewrite flush --allow-root
+/usr/local/bin/wp rewrite flush --allow-root
 
 # Install themes and plugins
-wp theme install /build/tna-base.zip --force --allow-root
-wp theme install /build/tna-child-blog.zip --force --allow-root
-wp plugin install amazon-s3-and-cloudfront --force --allow-root
-wp plugin install co-authors-plus --force --allow-root
-wp plugin install wordpress-seo --force --allow-root
-wp plugin install wp-mail-smtp --force --allow-root
-wp plugin install jquery-colorbox --force --allow-root
-wp plugin install simple-footnotes --force --allow-root
-wp plugin install /build/wp-sync-db.zip --force --allow-root
-wp plugin install /build/tna-editorial-review.zip --force --allow-root
-wp plugin install /build/tna-wp-aws.zip --force --allow-root
-wp plugin install /build/tna-password-message.zip --force --allow-root
+/usr/local/bin/wp theme install https://github.com/nationalarchives/tna-base/archive/master.zip --force --allow-root
+/usr/local/bin/wp theme install https://github.com/nationalarchives/tna-child-blog/archive/master.zip --force --allow-root
+/usr/local/bin/wp plugin install amazon-s3-and-cloudfront --force --allow-root
+/usr/local/bin/wp plugin install co-authors-plus --force --allow-root
+/usr/local/bin/wp plugin install wordpress-seo --force --allow-root
+/usr/local/bin/wp plugin install wp-mail-smtp --force --allow-root
+/usr/local/bin/wp plugin install jquery-colorbox --force --allow-root
+/usr/local/bin/wp plugin install simple-footnotes --force --allow-root
+/usr/local/bin/wp plugin install https://github.com/wp-sync-db/wp-sync-db/archive/master.zip --force --allow-root
+/usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-editorial-review/archive/master.zip --force --allow-root
+/usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-wp-aws/archive/master.zip --force --allow-root
+/usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-password-message/archive/master.zip --force --allow-root
