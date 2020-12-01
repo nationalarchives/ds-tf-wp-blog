@@ -3,7 +3,7 @@ resource "aws_launch_configuration" "wp_launch_config" {
     name_prefix          = "${var.service}wp"
     image_id             = var.ami_id
     instance_type        = var.instance_type
-    iam_instance_profile = aws_iam_instance_profile.wp.name
+    iam_instance_profile = aws_iam_instance_profile.blog.name
     user_data            = data.template_file.ec2_userdata.rendered
     key_name             = var.key_name
 

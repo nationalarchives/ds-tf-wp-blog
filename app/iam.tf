@@ -1,5 +1,5 @@
-resource "aws_iam_role" "wp_role" {
-    name               = "${var.service}-wp-${var.environment}-role"
+resource "aws_iam_role" "blog_role" {
+    name               = "${var.service}-wp-${var.environment}-assume-role"
     assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -17,9 +17,9 @@ resource "aws_iam_role" "wp_role" {
 EOF
 }
 
-resource "aws_iam_policy" "wp_cdn_s3_access" {
-    name        = "${var.service}-wp-${var.environment}-cdn-s3-policy"
-    description = "WP access to CDN"
+resource "aws_iam_policy" "blog_cdn_s3_access" {
+    name        = "${var.service}-wp-${var.environment}-cdn-s3bucket-policy"
+    description = "WP blog access to CDN"
 
     policy = <<EOF
 {
@@ -53,17 +53,17 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "s3_instance_role_policy" {
-    policy_arn = aws_iam_policy.wp_cdn_s3_access.arn
-    role       = aws_iam_role.wp_role.id
+    policy_arn = aws_iam_policy.blog_cdn_s3_access.arn
+    role       = aws_iam_role.blog_role.id
 }
 
 resource "aws_iam_role_policy_attachment" "smm_ec2_role_policy" {
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
-    role       = aws_iam_role.wp_role.id
+    role       = aws_iam_role.blog_role.id
 }
 
-resource "aws_iam_instance_profile" "wp" {
-    name = "${var.service}-wp-${var.environment}-instance-profile"
+resource "aws_iam_instance_profile" "blog" {
+    name = "${var.service}-wp-${var.environment}-iam-instance-profile"
     path = "/"
-    role = aws_iam_role.wp_role.name
+    role = aws_iam_role.blog_role.name
 }
