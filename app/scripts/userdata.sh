@@ -53,6 +53,7 @@ define( 'AS3CF_AWS_USE_EC2_IAM_ROLE', true );
 define( 'AS3CF_SETTINGS', serialize( array(
     'bucket' => '${cdn_bucket_name}',
     'provider' => 'aws',
+    'region' => '${cdn_aws_region}',
     'use-server-roles' => true,
     'copy-to-s3' => true,
     'serve-from-s3' => true,
