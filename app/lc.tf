@@ -34,6 +34,7 @@ data "template_file" "ec2_userdata" {
         environment        = var.environment
         domain             = var.wp_domain_name
         cdn_bucket_name    = var.cdn_bucket_name
+        cdn_aws_region     = var.cdn_aws_region
         cdn_cloudfront_url = var.cdn_cloudfront_url
         wpms_smtp_password = var.wpms_smtp_password
         cdn_dir            = var.cdn_dir
