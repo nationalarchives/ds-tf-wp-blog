@@ -50,6 +50,8 @@ variable "wp_domain_name" {}
 
 variable "cdn_bucket_name" {}
 
+variable "cdn_aws_region" {}
+
 variable "cdn_cloudfront_url" {}
 
 variable "cdn_s3_bucket_arn" {}
