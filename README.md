@@ -1,1 +1,3 @@
-# ds-tf-wp-blog
+# Blog Terraform module
+
+![Blog diagram](diagram.png)
