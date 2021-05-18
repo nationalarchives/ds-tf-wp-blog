@@ -58,6 +58,18 @@ variable "cdn_s3_bucket_arn" {}
 
 variable "cdn_dir" {}
 
-variable "wpms_smtp_password" {}
-
 variable "everyone" {}
+
+variable "ses_username" {}
+
+variable "ses_password" {}
+
+variable "ses_host" {}
+
+variable "ses_port" {}
+
+variable "ses_secure" {}
+
+variable "ses_from_email" {}
+
+variable "ses_from_name" {}
