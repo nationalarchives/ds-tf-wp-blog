@@ -64,8 +64,14 @@ define( 'AS3CF_SETTINGS', serialize( array(
     'force-https' => true,
     'remove-local-file' => true
 ) ) );
-define( 'WPMS_ON', true );
-define( 'WPMS_SMTP_PASS', '${wpms_smtp_password}' );
+define( 'SMTP_SES', true);
+define( 'SMTP_SES_USER', '${ses_user}' );
+define( 'SMTP_SES_PASS', '${ses_pass}' );
+define( 'SMTP_SES_HOST', '${ses_host}' );
+define( 'SMTP_SES_PORT', ${ses_port} );
+define( 'SMTP_SES_SECURE', '${ses_secure}' );
+define( 'SMTP_SES_FROM_EMAIL', '${ses_from_email}' );
+define( 'SMTP_SES_FROM_NAME', '${ses_from_name}' );
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '128M');
 @ini_set( 'memory_limit', '256M' );
@@ -80,14 +86,14 @@ PHP
 /usr/local/bin/wp plugin install amazon-s3-and-cloudfront --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install co-authors-plus --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install wordpress-seo --force --allow-root 2>/var/www/html/wp-cli.log
-/usr/local/bin/wp plugin install wp-mail-smtp --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install jquery-colorbox --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install simple-footnotes --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install https://github.com/wp-sync-db/wp-sync-db/archive/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-editorial-review/archive/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-wp-aws/archive/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
 /usr/local/bin/wp plugin install https://github.com/nationalarchives/tna-password-message/archive/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
-# /usr/local/bin/wp plugin install https://github.com/nationalarchives/ds-cookie-consent/archive/refs/heads/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
+/usr/local/bin/wp plugin install https://github.com/nationalarchives/ds-tna-wp-ses/archive/refs/heads/main.zip --force --allow-root 2>/var/www/html/wp-cli.log
+/usr/local/bin/wp plugin install https://github.com/nationalarchives/ds-cookie-consent/archive/refs/heads/master.zip --force --allow-root 2>/var/www/html/wp-cli.log
 
 # Set file permissions for apache
 sudo chown apache:apache /var/www/html -R

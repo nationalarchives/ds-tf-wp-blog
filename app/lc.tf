@@ -38,5 +38,12 @@ data "template_file" "ec2_userdata" {
         cdn_cloudfront_url = var.cdn_cloudfront_url
         wpms_smtp_password = var.wpms_smtp_password
         cdn_dir            = var.cdn_dir
+        ses_user           = var.ses_username
+        ses_pass           = var.ses_password
+        ses_host           = var.ses_host
+        ses_port           = var.ses_port
+        ses_secure         = var.ses_secure
+        ses_from_email     = var.ses_from_email
+        ses_from_name      = var.ses_from_name
     }
 }
