@@ -36,7 +36,6 @@ data "template_file" "ec2_userdata" {
         cdn_bucket_name    = var.cdn_bucket_name
         cdn_aws_region     = var.cdn_aws_region
         cdn_cloudfront_url = var.cdn_cloudfront_url
-        wpms_smtp_password = var.wpms_smtp_password
         cdn_dir            = var.cdn_dir
         ses_user           = var.ses_username
         ses_pass           = var.ses_password
