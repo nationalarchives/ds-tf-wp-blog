@@ -13,6 +13,11 @@ resource "aws_autoscaling_group" "wp" {
     health_check_grace_period = var.asg_health_check_grace_period
     health_check_type         = var.asg_health_check_type
 
+    lifecycle {
+        create_before_destroy = true
+        ignore_changes = [load_balancers, target_group_arns]
+    }
+
     tags = list(
     map("key", "Name", "value", "${var.service}-wp-${var.environment}", "propagate_at_launch", true),
     map("key", "Service", "value", var.service, "propagate_at_launch", true),
