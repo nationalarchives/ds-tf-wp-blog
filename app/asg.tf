@@ -18,14 +18,38 @@ resource "aws_autoscaling_group" "wp" {
         ignore_changes = [load_balancers, target_group_arns]
     }
 
-    tags = list(
-    map("key", "Name", "value", "${var.service}-wp-${var.environment}", "propagate_at_launch", true),
-    map("key", "Service", "value", var.service, "propagate_at_launch", true),
-    map("key", "Owner", "value", var.owner, "propagate_at_launch", true),
-    map("key", "CostCentre", "value", var.cost_centre, "propagate_at_launch", true),
-    map("key", "Terraform", "value", "true", "propagate_at_launch", true),
-    map("key", "Patch Group", "value", var.patch_group_name, "propagate_at_launch", true)
-    )
+    tags = tolist([
+        tomap({
+            "key"                 = "Name",
+            "value"               = "${var.service}-wp-${var.environment}",
+            "propagate_at_launch" = "true"
+        }),
+        tomap({
+            "key"                 = "Service",
+            "value"               = var.service,
+            "propagate_at_launch" = "true"
+        }),
+        tomap({
+            "key"                 = "Owner",
+            "value"               = var.owner,
+            "propagate_at_launch" = "true"
+        }),
+        tomap({
+            "key"                 = "CostCentre",
+            "value"               = var.cost_centre,
+            "propagate_at_launch" = "true"
+        }),
+        tomap({
+            "key"                 = "Terraform",
+            "value"               = "true",
+            "propagate_at_launch" = "true"
+        }),
+        tomap({
+            "key"                 = "Patch Group",
+            "value"               = var.patch_group_name,
+            "propagate_at_launch" = "true"
+        }),
+    ])
 }
 
 resource "aws_autoscaling_attachment" "public_asg_attachment" {
