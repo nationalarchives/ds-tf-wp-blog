@@ -40,36 +40,20 @@ variable "key_name" {}
 
 variable "efs_mount_dir" {}
 
-variable "wp_db_name" {}
-
-variable "wp_db_username" {}
-
-variable "wp_db_password" {}
-
-variable "wp_domain_name" {}
-
-variable "cdn_bucket_name" {}
-
-variable "cdn_aws_region" {}
-
-variable "cdn_cloudfront_url" {}
-
 variable "cdn_s3_bucket_arn" {}
-
-variable "cdn_dir" {}
 
 variable "everyone" {}
 
-variable "ses_username" {}
+variable "deployment_s3_bucket" {}
 
-variable "ses_password" {}
+variable "efs_backup_schedule" {}
 
-variable "ses_host" {}
+variable "efs_backup_start_window" {}
 
-variable "ses_port" {}
+variable "efs_backup_completion_window" {}
 
-variable "ses_secure" {}
+variable "efs_backup_cold_storage_after" {}
 
-variable "ses_from_email" {}
+variable "efs_backup_delete_after" {}
 
-variable "ses_from_name" {}
+variable "efs_backup_kms_key_arn" {}
