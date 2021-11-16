@@ -114,6 +114,7 @@ define('WP_HOME', 'https://${domain}');
 define( 'TNA_CLOUD', false );
 define( 'WP_MEMORY_LIMIT', '256M' );
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
+define( 'AS3CF_AWS_USE_EC2_IAM_ROLE', true );
 define( 'AS3CF_SETTINGS', serialize( array(
     'bucket' => '${cdn_bucket_name}',
     'provider' => 'aws',
