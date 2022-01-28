@@ -11,7 +11,7 @@ resource "aws_instance" "wp_primer" {
 
     root_block_device {
         volume_size = var.volume_size
-        encrypted   = true
+        encrypted   = false
     }
     
     user_data            = data.template_file.ec2_user_data.rendered
