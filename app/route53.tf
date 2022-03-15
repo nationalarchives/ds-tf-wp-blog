@@ -15,5 +15,5 @@ resource "aws_route53_record" "dev_blog_a" {
   name    = "${var.environment}-blog.nationalarchives.gov.uk"
   type    = "A"
   ttl     = "300"
-  records = [aws_lb.public_lb.name]
+  records = [aws_lb.public_lb.dns_name]
 }
