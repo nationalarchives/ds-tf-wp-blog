@@ -14,6 +14,10 @@ resource "aws_route53_record" "dev_blog_a" {
   zone_id = aws_route53_zone.dev_blog.zone_id
   name    = "${var.environment}-blog.nationalarchives.gov.uk"
   type    = "A"
-  ttl     = "300"
-  records = [aws_lb.public_lb.dns_name]
+
+  alias {
+    name                   = aws_lb.public_lb.dns_name
+    zone_id                = aws_lb.public_lb.zone_id
+    evaluate_target_health = true
+  }
 }
