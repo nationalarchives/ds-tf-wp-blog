@@ -51,4 +51,3 @@ variable "wp_app_access_sg_id" {}
 variable "everyone" {}
 
 variable "route53_local_zone_id" {}
-
