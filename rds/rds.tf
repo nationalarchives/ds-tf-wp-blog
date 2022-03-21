@@ -23,6 +23,16 @@ resource "aws_db_instance" "wp_db_main" {
     backup_retention_period     = var.db_backup_retention_period
     snapshot_identifier         = var.db_snapshot_identifier != "" ? data.aws_db_snapshot.latest_snapshot[0].id : null
 
+    customer_owned_ip_enabled = false
+    deletion_protection = false
+    domain = ""
+    domain_iam_role_name = ""
+    identifier_prefix = ""
+    iops = 0
+    max_allocated_storage = 0
+    replica_mode = ""
+    replicate_source_db = ""
+
     lifecycle {
         ignore_changes = [
             snapshot_identifier
