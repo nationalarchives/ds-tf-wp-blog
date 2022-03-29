@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "dev_blog" {
-    name = "${var.environment}-blog.nationalarchives.gov.uk"
+    name = var.public_domain_name
 
     tags = {
         Environment = var.environment
@@ -12,7 +12,7 @@ resource "aws_route53_zone" "dev_blog" {
 
 resource "aws_route53_record" "dev_blog_a" {
   zone_id = aws_route53_zone.dev_blog.zone_id
-  name    = "${var.environment}-blog.nationalarchives.gov.uk"
+  name    = var.public_domain_name
   type    = "A"
 
   alias {
