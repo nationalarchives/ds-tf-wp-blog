@@ -108,7 +108,7 @@ resource "aws_db_instance" "wp_db_main_10_6" {
     vpc_security_group_ids = [
         aws_security_group.wp_db_access.id
     ]
-    parameter_group_name        = aws_db_parameter_group.wp_blog_db.name
+    parameter_group_name        = aws_db_parameter_group.wp_blog_db_10_6.name
     allow_major_version_upgrade = true
     final_snapshot_identifier   = "${var.service}-wp-${var.environment}-final-snapshot"
     backup_window               = var.db_backup_window
@@ -129,5 +129,15 @@ resource "aws_db_instance" "wp_db_main_10_6" {
         Owner       = var.owner
         CreatedBy   = var.created_by
         Terraform   = true
+    }
+}
+
+resource "aws_db_parameter_group" "wp_blog_db_10_6" {
+    name   = var.db_parameter_group_name
+    family = var.db_parameter_group_family
+
+    parameter {
+        name  = "log_bin_trust_function_creators"
+        value = "1"
     }
 }
