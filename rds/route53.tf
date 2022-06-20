@@ -7,3 +7,4 @@ resource "aws_route53_record" "db" {
         aws_db_instance.wp_db_main.address
     ]
 }
+
