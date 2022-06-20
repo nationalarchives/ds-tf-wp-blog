@@ -1,6 +1,6 @@
 resource "aws_db_instance" "wp_db_main" {
     name                   = var.wp_db_name
-    identifier             = "${var.service}-wp-main"
+    identifier             = "${var.service}-wp-primary"
     allocated_storage      = var.db_allocated_storage
     storage_type           = var.db_storage_type
     storage_encrypted      = var.db_storage_encrypted
@@ -30,7 +30,7 @@ resource "aws_db_instance" "wp_db_main" {
     }
 
     tags = {
-        Name        = "${var.service}-wp-main"
+        Name        = "${var.service}-wp-primary"
         Service     = var.service
         Environment = var.environment
         CostCentre  = var.cost_centre
@@ -51,7 +51,7 @@ data "aws_db_snapshot" "latest_snapshot" {
 resource "aws_db_instance" "wp_db_replica" {
     count                   = var.environment == "live" ? 1 : 0
     name                    = var.wp_db_name
-    identifier              = "${var.service}-wp-replica"
+    identifier              = "${var.service}-wp-secondary"
     allocated_storage       = var.db_allocated_storage
     storage_type            = var.db_storage_type
     storage_encrypted       = var.db_storage_encrypted
@@ -68,7 +68,7 @@ resource "aws_db_instance" "wp_db_replica" {
     skip_final_snapshot     = true
 
     tags = {
-        Name        = "${var.service}-wp-replica"
+        Name        = "${var.service}-wp-secondary"
         Service     = var.service
         Environment = var.environment
         CostCentre  = var.cost_centre
