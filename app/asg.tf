@@ -15,41 +15,39 @@ resource "aws_autoscaling_group" "wp" {
 
     lifecycle {
         create_before_destroy = true
-        ignore_changes = [load_balancers, target_group_arns]
+        ignore_changes        = [load_balancers, target_group_arns]
     }
 
-    tags = [
-        {
-            key                 = "Name"
-            value               = "${var.service}-wp-${var.environment}"
-            propagate_at_launch = "true"
-        },
-        {
-            key                 = "Service"
-            value               = var.service
-            propagate_at_launch = "true"
-        },
-        {
-            key                 = "Owner"
-            value               = var.owner
-            ropagate_at_launch = "true"
-        },
-        {
-            key                 = "CostCentre"
-            value               = var.cost_centre
-            propagate_at_launch = "true"
-        },
-        {
-            key                 = "Terraform"
-            value               = "true"
-            propagate_at_launch = "true"
-        },
-        {
-            key                 = "Patch Group"
-            value               = var.patch_group_name
-            propagate_at_launch = "true"
-        },
-    ]
+    tag {
+        key                 = "Name"
+        value               = "${var.service}-wp-${var.environment}"
+        propagate_at_launch = "true"
+    }
+    tag {
+        key                 = "Service"
+        value               = var.service
+        propagate_at_launch = "true"
+    }
+    tag {
+        key                = "Owner"
+        value              = var.owner
+        propagate_at_launch = "true"
+    }
+    tag {
+        key                 = "CostCentre"
+        value               = var.cost_centre
+        propagate_at_launch = "true"
+    }
+    tag {
+        key                 = "Terraform"
+        value               = "true"
+        propagate_at_launch = "true"
+    }
+    tag {
+        key                 = "Patch Group"
+        value               = var.patch_group_name
+        propagate_at_launch = "true"
+    }
 }
 
 resource "aws_autoscaling_attachment" "public_asg_attachment" {
