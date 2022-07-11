@@ -49,7 +49,7 @@ resource "aws_autoscaling_group" "wp" {
             value               = var.patch_group_name
             propagate_at_launch = "true"
         },
-    ])
+    ]
 }
 
 resource "aws_autoscaling_attachment" "public_asg_attachment" {
