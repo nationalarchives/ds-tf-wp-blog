@@ -20,33 +20,33 @@ resource "aws_autoscaling_group" "wp" {
 
     tags = [
         {
-            key                 = "Name",
-            value               = "${var.service}-wp-${var.environment}",
+            key                 = "Name"
+            value               = "${var.service}-wp-${var.environment}"
             propagate_at_launch = "true"
         },
         {
-            key                 = "Service",
-            value               = var.service,
+            key                 = "Service"
+            value               = var.service
             propagate_at_launch = "true"
         },
         {
-            key                 = "Owner",
-            value               = var.owner,
+            key                 = "Owner"
+            value               = var.owner
             ropagate_at_launch = "true"
         },
         {
-            key                 = "CostCentre",
-            value               = var.cost_centre,
+            key                 = "CostCentre"
+            value               = var.cost_centre
             propagate_at_launch = "true"
         },
         {
-            key                 = "Terraform",
-            value               = "true",
+            key                 = "Terraform"
+            value               = "true"
             propagate_at_launch = "true"
         },
         {
-            key                 = "Patch Group",
-            value               = var.patch_group_name,
+            key                 = "Patch Group"
+            value               = var.patch_group_name
             propagate_at_launch = "true"
         },
     ])
